@@ -1,65 +1,96 @@
-/* Projects Section */
-.projects {
-    padding: 40px 0;
-    background: #fff;
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
     text-align: center;
 }
 
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700; /* Warna kuning emas saat hover */
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Project Grid Styling */
 .project-grid {
-    display: flex; /* Ini kunci untuk membuat sejajar */
-    flex-wrap: wrap; /* Memungkinkan kartu untuk melipat ke baris baru jika tidak cukup ruang */
-    justify-content: center; /* Pusatkan kartu jika ada ruang sisa, atau Anda bisa gunakan space-around */
-    gap: 20px; /* Jarak antar kartu proyek */
-    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
 }
 
 .project-card {
-    background: #f9f9f9;
+    background-color: #fff;
     border: 1px solid #ddd;
-    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: left;
-    /* Atur lebar kartu agar bisa sejajar */
-    flex: 1 1 calc(33.33% - 40px); /* Fleksibel, tumbuh, ciut, dan lebar dasar 33.33% dikurangi gap */
-    max-width: calc(33.33% - 40px); /* Batasi lebar maksimum agar tidak terlalu besar */
-    box-sizing: border-box; /* Pastikan padding dan border termasuk dalam lebar */
-    margin-bottom: 20px; /* Untuk jarak antar baris saat kartu melipat */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Penyesuaian untuk layar yang lebih kecil */
-@media (max-width: 992px) { /* Untuk tablet */
-    .project-card {
-        flex: 1 1 calc(50% - 30px);
-        max-width: calc(50% - 30px);
-    }
+.project-card:hover {
+    transform: translateY(-5px); /* Efek angkat saat hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-
-@media (max-width: 768px) { /* Untuk tablet kecil dan mobile landscape */
-    .project-card {
-        flex: 1 1 calc(50% - 30px);
-        max-width: calc(50% - 30px);
-    }
-}
-
-@media (max-width: 576px) { /* Untuk mobile portrait */
-    .project-card {
-        flex: 1 1 100%; /* Satu kolom penuh */
-        max-width: 100%;
-    }
-}
-
 
 .project-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin-bottom: 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Pastikan gambar mengisi ruang tanpa distorsi */
+    display: block;
+}
+
+.project-card-content {
+    padding: 15px;
 }
 
 .project-card h3 {
-    color: #333;
     margin-top: 0;
+    color: #007bff; /* Warna biru untuk judul proyek */
 }
 
 .project-card p {
@@ -67,17 +98,72 @@
     color: #666;
 }
 
-.button {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    transition: background 0.3s ease;
+.project-card .tags {
+    margin-top: 10px;
 }
 
-.button:hover {
-    background: #555;
+.project-card .tag {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #555;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.project-card a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.project-card a:hover {
+    background-color: #0056b3;
+}
+
+/* About and Contact Sections */
+.about-section,
+.contact-section {
+    text-align: center;
+}
+
+.contact-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-section ul li {
+    margin-bottom: 10px;
+}
+
+.contact-section a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr; /* Kolom tunggal untuk layar kecil */
+    }
 }
