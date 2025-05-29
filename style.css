@@ -1,72 +1,3 @@
-/* General Styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 0;
-}
-
-/* Header */
-header {
-    background: #333;
-    color: #fff;
-    padding-top: 20px;
-    min-height: 70px;
-    border-bottom: #77aaff 3px solid;
-    text-align: center;
-}
-
-header h1 {
-    margin: 0;
-    padding-bottom: 10px;
-}
-
-header nav ul {
-    padding: 0;
-    list-style: none;
-}
-
-header nav ul li {
-    display: inline;
-    padding: 0 15px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 16px;
-}
-
-header nav ul li a:hover {
-    color: #77aaff;
-}
-
-/* Hero Section */
-.hero {
-    background: #77aaff;
-    color: #fff;
-    text-align: center;
-    padding: 50px 0;
-}
-
-.hero .profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #fff;
-    margin-bottom: 20px;
-}
-
 /* Projects Section */
 .projects {
     padding: 40px 0;
@@ -75,9 +6,10 @@ header nav ul li a:hover {
 }
 
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    display: flex; /* Use flexbox for horizontal layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    justify-content: space-around; /* Distribute space evenly around items */
+    gap: 20px; /* Adjust the gap between project cards */
     margin-top: 30px;
 }
 
@@ -88,6 +20,22 @@ header nav ul li a:hover {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: left;
+    width: calc(33.33% - 20px); /* Roughly one-third width, minus the gap */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin-bottom: 20px; /* Add some bottom margin for spacing when wrapping */
+}
+
+/* Adjust width for smaller screens */
+@media (max-width: 768px) {
+    .project-card {
+        width: calc(50% - 20px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .project-card {
+        width: 100%; /* Single column on small screens */
+    }
 }
 
 .project-card img {
@@ -120,28 +68,4 @@ header nav ul li a:hover {
 
 .button:hover {
     background: #555;
-}
-
-/* Contact Section */
-.contact {
-    padding: 40px 0;
-    text-align: center;
-    background: #e9e9e9;
-}
-
-.contact a {
-    color: #77aaff;
-    text-decoration: none;
-}
-
-.contact a:hover {
-    text-decoration: underline;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #333;
-    color: #fff;
 }
