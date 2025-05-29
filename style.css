@@ -6,10 +6,10 @@
 }
 
 .project-grid {
-    display: flex; /* Use flexbox for horizontal layout */
-    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
-    justify-content: space-around; /* Distribute space evenly around items */
-    gap: 20px; /* Adjust the gap between project cards */
+    display: flex; /* Ini kunci untuk membuat sejajar */
+    flex-wrap: wrap; /* Memungkinkan kartu untuk melipat ke baris baru jika tidak cukup ruang */
+    justify-content: center; /* Pusatkan kartu jika ada ruang sisa, atau Anda bisa gunakan space-around */
+    gap: 20px; /* Jarak antar kartu proyek */
     margin-top: 30px;
 }
 
@@ -20,23 +20,35 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: left;
-    width: calc(33.33% - 20px); /* Roughly one-third width, minus the gap */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    margin-bottom: 20px; /* Add some bottom margin for spacing when wrapping */
+    /* Atur lebar kartu agar bisa sejajar */
+    flex: 1 1 calc(33.33% - 40px); /* Fleksibel, tumbuh, ciut, dan lebar dasar 33.33% dikurangi gap */
+    max-width: calc(33.33% - 40px); /* Batasi lebar maksimum agar tidak terlalu besar */
+    box-sizing: border-box; /* Pastikan padding dan border termasuk dalam lebar */
+    margin-bottom: 20px; /* Untuk jarak antar baris saat kartu melipat */
 }
 
-/* Adjust width for smaller screens */
-@media (max-width: 768px) {
+/* Penyesuaian untuk layar yang lebih kecil */
+@media (max-width: 992px) { /* Untuk tablet */
     .project-card {
-        width: calc(50% - 20px); /* Two columns on medium screens */
+        flex: 1 1 calc(50% - 30px);
+        max-width: calc(50% - 30px);
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) { /* Untuk tablet kecil dan mobile landscape */
     .project-card {
-        width: 100%; /* Single column on small screens */
+        flex: 1 1 calc(50% - 30px);
+        max-width: calc(50% - 30px);
     }
 }
+
+@media (max-width: 576px) { /* Untuk mobile portrait */
+    .project-card {
+        flex: 1 1 100%; /* Satu kolom penuh */
+        max-width: 100%;
+    }
+}
+
 
 .project-card img {
     max-width: 100%;
